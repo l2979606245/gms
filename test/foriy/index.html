@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        hello world
+    </div>
+    <img src="images/nihc.gif" alt="">
+    <script>
+        var log = console.log.bind(console)
+        var e = selector => document.querySelector(selector)
+        var ajax = (method, path, data, callback) => {
+            var r = new XMLHttpRequest()
+            r.open(method, path, true)
+            r.setRequestHeader('Content-Type', 'application/json')
+            r.onreadystatechange = () => {
+                if (r.readyState == 4) {
+                    callback(r.response)
+                }
+            }
+            if (method === 'POST') {
+                data = JSON.stringify(data)
+            }
+            r.send(data)
+        }
+
+        var getSelect = () => {
+            var method = 'GET'
+            // var baseUrl = 'localhost:8000'
+            var path =  '/select'
+            var data
+            ajax(method, path, data, (res) => {
+                var fin = JSON.parse(res)
+                console.log('数据库中取数据', fin, Array.isArray(fin))
+            })
+        }
+        var __main = () => {
+            console.log('vixkmain')
+            getSelect()
+        }
+        __main()
+    </script>
+</body>
+</html>
