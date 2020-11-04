@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./vue.js"></script>
+    <link rel="stylesheet" href="./goods.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div id="components-demo">
+            <house-button v-for="item in list" :info="item" :key="item.id"></house-button>
+        </div>
+        <div class="page-bar" >
+            <ul>
+                <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
+                <li v-if="cur==1"><a class="banclick">上一页</a></li>
+                <li v-for="index in indexs"  v-bind:class="{ 'active': cur == index}" :key="index">
+                    <a v-on:click="btnClick(index)">{{ index }}</a>
+                </li>
+                <li v-if="cur!=all"><a v-on:click="cur++,pageClick()">下一页</a></li>
+                <li v-if="cur == all"><a class="banclick">下一页</a></li>
+                <li><a>共<i>{{all}}</i>页</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 组件
+        Vue.component('house-button', {
+            props: {
+            info: Object
+        },
+        data () {
+            return {
+                colors: {
+                    '白色': '#ffffff',
+                    '红色': '#f2352e',
+                    '黑色': 'black',
+                    '香槟金': 'rgb(215, 202, 153)',
+                    '银色': '#c0c0c0'
+                }
+            }
+        },
+        methods: {
+            handleGoods() {
+                // console.log('加入购物车商品id', this.info.id)
+                // this.$store.commit('addGoods', this.info.id)
+                // this.$store.dispatch('addGoods', {userId: this.$store.state.user.id,goodsId: this.info.id})
+                this.$store.dispatch('addGoods', this.info.id)
+            },
+            hideSlide() {
+                this.$store.commit('setHasSlide', false)
+            }
+        },
+            template: `
+            <div class="goods">
+                <img :src="info.image" alt="">    
+                <h4 class="goods-name">{{ info.name }}</h4>
+            </div > `
+        })
+        //实例
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                list: [ {image: "./img/1.jpg", name: 'xxx'},
+                        {image: "./img/1.jpg", name: 'xxx'},
+                        {image: "./img/1.jpg", name: 'xxx'},
+                        {image: "./img/1.jpg", name: 'xxx'},
+                        {image: "./img/1.jpg", name: 'xxx'},
+                        {image: "./img/1.jpg", name: 'xxx'},
+                        {image: "./img/1.jpg", name: 'xxx'},
+                        {image: "./img/1.jpg", name: 'xxx'}],
+            }
+    
+        })
+
+    </script>
+</body>
+
+</html>

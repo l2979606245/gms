@@ -1,0 +1,132 @@
+.goods{
+    width: 25%;
+    float: left;
+}
+.goods-main{
+    display: block;
+    margin: 16px;
+    padding: 16px;
+    border: 1px solid #dddee1;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #fff;
+    text-align: center;
+    position: relative;
+}
+.goods-main img{
+    width: 100%;
+}
+.goods-name{
+    color: #222;
+    overflow: hidden;
+    text-emphasis: ellipsis;
+    white-space: nowrap;
+}
+.goods-main:hover .goods-name{
+    color: #0070c9;
+}
+.goods-color{
+    display: block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #dddee1;
+    border-radius: 50%;
+    margin: 6px auto;
+}
+.goods-cost{
+    color: #de4037;
+    margin-top: 6px;
+}
+.goods-add{
+    display: none;
+    padding: 4px 8px;
+    background: #2d8cf0;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.goods-main:hover .goods-add{
+    display: inline-block;
+}
+
+
+/* 可能不需要 */
+.goods-not-found{
+    text-align: center;
+    padding: 32px;
+}
+.list-control{
+    background: #fff;
+    border-radius: 6px;
+    margin: 16px;
+    padding: 16px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+}
+.list-control-filter{
+    margin-bottom: 16px;   
+}
+.list-control-filter-item,
+.list-control-order-item {
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid #e9eaec;
+    border-radius: 4px;
+    margin-right: 6px;
+    padding: 2px 6px;
+}
+.list-control-filter-item.on,
+.list-control-order-item.on{
+    background: #f2352e;
+    border: 1px solid #f2352e;
+    color: #fff;
+}
+.page-bar{
+display: block;
+margin:40px;
+}
+ul,li{
+margin: 0px;
+padding: 0px;
+}
+li{
+list-style: none
+}
+.page-bar li:first-child>a {
+margin-left: 450px;
+}
+.page-bar a{
+border: 1px solid #ddd;
+text-decoration: none;
+position: relative;
+float: left;
+padding: 6px 12px;
+margin-left: -1px;
+line-height: 1.42857143;
+color: #337ab7;
+cursor: pointer;
+}
+.page-bar a:hover{
+background-color: #eee;
+}
+.page-bar a.banclick{
+cursor:not-allowed;
+}
+.page-bar .active a{
+color: #fff;
+cursor: default;
+background-color: #337ab7;
+border-color: #337ab7;
+}
+.page-bar i{
+font-style:normal;
+color: #d44950;
+margin: 0px 4px;
+font-size: 12px;
+}
+.clearfloat {
+clear:both
+}

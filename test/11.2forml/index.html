@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./data.js"></script>
+    <script>
+        let res = {
+            name: '',
+            sales: 0,
+            company: '',
+            sum: 0
+        }
+        // console.log(treedata)
+        for (let i of treedata) {
+            res.sum = 0
+            res.company = i.company
+            let second = i.children
+            for (let j of second) {
+                let third = j.children
+                for (let k of third) {
+                    let forth = k.children
+                    for (let l of forth) {
+                        if (l.name === '人员520') {
+                            res.name = l.name
+                            res.sales = l.sales
+                            res.sum += l.sales
+                            break;
+                        } else {
+                            res.sum += l.sales
+                            continue;
+                        }
+                    }
+                }
+            }
+        }
+        console.log(res)
+    </script>
+</body>
+
+</html>
